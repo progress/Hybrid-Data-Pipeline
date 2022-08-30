@@ -1,1 +1,1 @@
-# Progress Hybrid Data Pipeline
+# Progress DataDirect Hybrid Data Pipeline
