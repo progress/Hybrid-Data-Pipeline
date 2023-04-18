@@ -1,0 +1,402 @@
+/* Update help and support links variables in header and footer*/
+:root {
+  --help: 'https://<www.example.com>/en/resources/customer-connect';
+  --support: 'https://<www.example.com>/en/support';
+}
+
+body {
+    content: 'help:' var(--help)',''support:' var(--support);
+}
+
+/* Update Header background color for all pages*/
+#header,
+.header.force_password_change {
+    background-color: #FDECA6 !important;
+    border-bottom: 2px solid #FBA016;
+}
+
+/*Update Profile font color in header*/
+#header .user-icon-details div {
+    color: #5f5f5f !important;
+}
+
+/* update hover colors for Profile and help dropdown */
+#header #userdropdown:hover {
+    background-color: #FBA016 !important;
+}
+
+#header #helpdropdown:hover {
+    background-color: #FBA016 !important;
+}
+
+#header .dropdown-content a:hover {
+    background-color: #FDECA6 !important;
+}
+
+#header .trialMsg {
+    color: #5f5f5f !important;
+}
+
+/* Update Header title for all pages*/
+#header .logo-content span,
+.header.force_password_change span {
+    display: none;
+}
+
+#header .logo-content:after {
+    content: 'Data Pipeline';
+    font-weight: bold;
+}
+
+/* Update change password header title */
+.header.force_password_change:after {
+	content: 'Data pipeline';
+    font-size: 22pt;
+	top: 20%;
+    position: absolute;
+    margin-left: 20px;
+    color: #FBA016;
+    font-weight: bold;
+}
+
+/* Update Header logo */
+#header .hdp-logo {
+    background-image: url("./sunny.png") !important;
+    margin-bottom: 10px !important;
+    background-size: contain;
+    width: 50px !important;
+    border-radius: 15px;
+}
+
+.login_page .hdp-logo {
+	height: 100%;
+    top: 0%;
+	display: inline-block;
+}
+
+.login_page .logo-content {
+	position: absolute;
+    top: 0%;
+}
+
+#header .logo-content {
+    padding-left: 30px !important;
+    color: #FBA016 !important;
+}
+
+/*Update change password logo */
+.header.force_password_change img {
+    content: url("./sunny.png") !important;
+    width: auto;
+    height: 100%;
+    top: 0% !important;
+}
+
+/* Login page & force password page button styles */
+#hdp-login-form .container .login .highlighted-button {
+    background-color : #f0cc40 !important;
+}
+
+#hdp-login-form .container .login .highlighted-button:hover {
+    background-color : #FBA016 !important;
+}
+
+#hdp-login-form .container .login .highlighted-button:disabled {
+    background-color : #f6c49e !important;
+}
+
+/* Login page & force password page background */
+.background-container, .forceChangePwdForm {
+    background-image: url("./background.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+	height: 100%;
+}
+
+.background-container .login,
+.forceChangePwdForm .forceChangePasswordWrapper {
+	background-color: white;
+	padding: 10px;
+	filter: drop-shadow(5px 5px 10px #44444d81);
+    border-radius: 10px;
+}
+
+/* Update login page textboxs */
+.login input[type=text]:focus, .login input[type=password]:focus {
+    /*border-color: #7de27d !important;*/
+    outline-color: #f0cc40 !important;
+    outline-offset: 0;
+}
+
+/* Update footer */
+.footer div {
+	background-color: #FDECA6 !important;
+}
+
+.footer div a {
+	color: black !important;
+}
+
+/* Update footer copyright text */
+.footer div > span:first-child {
+	display: none;
+}
+
+.footer div:after {
+	content: 'Copyright © 2023 - All rights reserved.';
+	float: right;
+    margin-right: 15px;
+    color:black;
+}
+
+/* Update Primary button colors */ 
+.primary-action-button:disabled {
+     background-color: #d0d0d0;
+     color: #FFFFFF;
+     border:#d0d0d0 !important;
+}
+.primary-action-button {
+     background-color: #f0cc40;
+     color: #FFFFFF;
+     border: #f0cc40 !important;
+}
+.primary-action-button:hover:not([disabled]) {
+    background-color: #FBA016;
+    color: #FFFFFF;
+    border:#FBA016 !important;
+}
+
+/* Update Secondary button colors */ 
+.secondary-action-button:disabled {
+     background-color: #d0d0d0;
+     color: #FFFFFF;
+     border:#d0d0d0 !important;
+}
+.secondary-action-button {
+     background-color: #f0cc40;
+     color: #FFFFFF;
+     border: #f0cc40 !important;
+}
+.secondary-action-button:hover:not([disabled]) {
+    background-color: #FBA016;
+    color: #FFFFFF;
+    border:#FBA016 !important
+}
+
+/* Update highlighted button colors */ 
+.highlighted-button:disabled {
+    background-color: #d0d0d0;
+    color: #FFFFFF;
+    border:#d0d0d0 !important;
+}
+.highlighted-button {
+    background-color: #f0cc40;
+    color: #FFFFFF;
+    border: #f0cc40 !important;
+}
+.highlighted-button:hover:not([disabled]){
+    background-color: #FBA016;
+    color: #FFFFFF;
+    border:#FBA016 !important
+}
+
+/* Update highlighted teritiary button colors */ 
+.highlighted-teritiary-action-button:disabled {
+    background-color: #d0d0d0;
+    color: #FFFFFF;
+    border:#d0d0d0 !important;
+}
+.highlighted-teritiary-action-button{
+    background-color: #f0cc40;
+    color: #FFFFFF;
+    border: #f0cc40 !important;
+}
+.highlighted-teritiary-action-button:hover:not([disabled]){
+    background-color: #FBA016;
+    border:#FBA016 !important;
+    color: #FFFFFF;
+}
+
+/* Update Pop-up title bar color*/
+.k-window .k-dialog-titlebar {
+     background-color: #f0cc40;
+     color: #FFFFFF;
+}
+
+/* Update about Section logo */
+ #about-hdp-logo{
+     background-image: url("./sunny.png") !important;
+     background-repeat: no-repeat !important;
+     background-size: 250px !important;
+     background-position: center center !important;
+     height: 80px !important;
+}
+
+/* Left navigation styles */
+
+/* Collapsed tabs */
+.leftnav,
+.leftNav #left-nav-tab ul.nav.nav-stacked li:first-child {
+    background-color: #f6f6f6 !important;
+}
+
+.leftNav #left-nav-tab ul.nav.nav-stacked li {
+	background-color: #FDECA6 !important;
+}
+
+.leftNav #left-nav-tab ul.nav.nav-stacked li .fa-arrow-circle-o-right {
+    color: #FBA016 !important;
+}
+
+.leftNav #left-nav-tab ul.nav.nav-stacked .selected,
+.leftNav #left-nav-tab ul.nav.nav-stacked li:hover:not(#expand_nav_icon):not(.fa-arrow-circle-o-right),
+.leftNav #left-nav-tab ul.nav.nav-stacked div:hover:not(#expand_nav_icon):not(.fa-arrow-circle-o-right) {
+    background-color: #FBA016 !important;
+}
+
+/* Expanded tabs*/
+.expandedNav #left-nav-tab > div:first-child {
+	background-color: #f6f6f6 !important;
+}
+
+.expandedNav #left-nav-tab .group-icons .group-list {
+	background-color: #FDECA6 !important;
+}
+
+.expandedNav #left-nav-tab .group-icons .group-list .selected,
+.expandedNav #left-nav-tab .group-icons .group-list div:hover,
+.expandedNav #left-nav-tab .group-icons .group-list .sub-items:hover {
+	background-color: #FBA016 !important;
+}
+
+.expandedNav #left-nav-tab li .fa-arrow-circle-o-left {
+    color: #FBA016 !important;
+}
+
+.expandedNav #left-nav-tab .group-icons .group-list .sub-items .items-align .icon-text,
+.expandedNav #left-nav-tab .group-icons .groupText {
+    color: black !important;
+}
+
+/* Horizantal kendo tab strips */
+.k-form .k-tabstrip-items .k-item.k-state-active {
+	background-color: #FBA016;
+	color: #000000;
+	border: none;
+}
+
+.k-form .k-tabstrip-items .k-item:hover {
+    color: #000000;
+    background-color: #FDECA6;
+}
+
+.k-form .k-tabstrip-items .k-item:after {
+    border-left: 1px #000000 solid;
+}
+
+/*Datasource & Group tabs*/
+#pagecontainer ul.nav-tabs li.active {
+	background-color: #FBA016 !important;
+	border:none !important;
+	padding-right: 15px !important;
+}
+
+#pagecontainer ul.nav-tabs li#dsTab.active {
+	padding-left: 20px !important;
+}
+
+#pagecontainer ul.nav-tabs li#groupdsTab.active {
+	padding-right: 15px !important;
+}
+
+#pagecontainer ul.nav-tabs li.active a.ds_tab_style{
+	color: #ffffff !important;
+}
+
+/*Update Actions button*/
+.dropDownForm .k-button{
+    background-color: #f0cc40 !important;
+    border: #f0cc40 !important;
+    color: #ffffff !important;
+}
+.dropDownForm .k-button:hover:not([disabled]) {
+    background-color: #FBA016 !important;
+    border:#FBA016 !important;
+    color: #FFFFFF;
+}
+
+.k-list .k-item.k-state-focused,
+.k-list .k-item:hover {
+    background-color: #FDECA6;
+}
+
+/* Data Grid row colors*/
+.k-grid tbody tr:hover,
+.k-grid tr.k-state-selected > td {
+    background-color: #FDECA6;
+}
+
+/* Update left navigation icons */
+.tenants-icon.left-nav-icons{
+    background-image: url(./assets/tenant.svg) !important;
+    background-size: 30px;
+}
+.tenants-icon.expanded-left-nav-icons {
+    background-image: url(./assets/tenant.svg) !important;
+}
+.user-icon.left-nav-icons{
+    background-image: url(./assets/user.svg) !important;
+    background-size: 30px;
+}
+.user-icon.expanded-left-nav-icons {
+    background-image: url(./assets/user.svg) !important;
+}
+.roles-icon.left-nav-icons{
+    background-image: url(./assets/roles.svg) !important;
+    background-size: 30px;
+}
+.roles-icon.expanded-left-nav-icons {
+    background-image: url(./assets/roles.svg) !important;
+}
+.database-icon.left-nav-icons{
+    background-image: url(./assets/datasources.svg) !important;
+    background-size: 30px;
+}
+.database-icon.expanded-left-nav-icons {
+    background-image: url(./assets/datasources.svg) !important;
+}
+.xml-icon.left-nav-icons{
+    background-image: url(./assets/sqleditor.svg) !important;
+    background-size: 30px;
+}
+.xml-icon.expanded-left-nav-icons {
+    background-image: url(./assets/sqleditor.svg) !important;
+}
+.extauth-icon.left-nav-icons{
+    background-image: url(./assets/authentication.svg) !important;
+    background-size: 30px;
+}
+.extauth-icon.expanded-left-nav-icons {
+    background-image: url(./assets/authentication.svg) !important;
+}
+.ip-whitelist-icon.left-nav-icons{
+    background-image: url(./assets/ipwhitelist.svg) !important;
+    background-size: 30px;
+}
+.ip-whitelist-icon.expanded-left-nav-icons {
+    background-image: url(./assets/ipwhitelist.svg) !important;
+}
+.limits-icon.left-nav-icons{
+    background-image: url(./assets/limits.svg) !important;
+    background-size: 30px;
+}
+.limits-icon.expanded-left-nav-icons {
+    background-image: url(./assets/limits.svg) !important;
+}
+.gear-icon.left-nav-icons{
+    background-image: url(./assets/settings.svg) !important;
+    background-size: 30px;
+}
+.gear-icon.expanded-left-nav-icons {
+    background-image: url(./assets/settings.svg) !important;
+}
