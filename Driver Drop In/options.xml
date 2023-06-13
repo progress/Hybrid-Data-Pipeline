@@ -1,0 +1,583 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+	
+	<!-- The "datastore-metadata" element specifies data store metadata  -->
+	<xs:element name="datastore-metadata">
+		<xs:annotation>
+			<xs:appinfo>
+				<!-- displayName specifies the name of the data store as it appears in the Web UI. This must be the same name as the driver jar file, though spaces are allowed. For example, if you are adding the connector1.jar file, you may use 'connector1' or 'connector 1' as the displayName. -->
+				<displayName>connector A</displayName>
+				<!-- id specifies the unique ID of the data store. This must be an integer between 5001 and 7000. The same unique ID must be specified in the profile.xml file with the "ID" element. -->
+				<id>5030</id>
+				<!-- displayOrder specifies the order in which data stores are displayed on the data store page -->
+				<displayOrder>330</displayOrder>
+				<!-- Do not modify -->
+				<isBeta>0</isBeta>
+				<!-- Do not modify -->
+				<status>5</status>
+			</xs:appinfo>
+		</xs:annotation>
+	</xs:element>
+	
+	<!-- The "options" element should not be modified. The options element defines attributes that may be used when defining a data store. -->
+	<xs:element name="options">
+		<xs:complexType>
+			<xs:choice minOccurs="1" maxOccurs="1">
+				<xs:element ref="Hybrid" />
+			</xs:choice>
+		</xs:complexType>
+	</xs:element>
+	
+	<!-- The "Hybrid" element contains data store options -->
+	<xs:element name="Hybrid">
+		<xs:complexType>
+			<xs:sequence>
+				<!-- Example string option -->
+				<!-- The example StringOption element is defined here. minOccurs="0" indicates it is not required. default="enter-string-here" specifies the default setting. -->
+				<xs:element name="Name" minOccurs="1">
+					<!-- annotation describes the properties of this option -->
+					<xs:annotation>
+						<!-- Adds a tooltip at the end of the field -->
+						<xs:documentation>A name you provide to uniquely identify this Data Source.</xs:documentation>
+						<!-- appinfo describes specific metadata for this option -->
+						<xs:appinfo>
+							<!-- displayName specifies the name of the data source -->
+							<displayName>Data Source Name</displayName>
+							<!-- persistAsOption specifies whether the connection option is passed as part of the JDBC connection -->
+							<persistAsOption>false</persistAsOption>
+							<!-- displayTab specifies on which tab the option will appear accouding to the Hybrid-Tabs element -->
+							<displayTab>1</displayTab>
+							<!-- helpURL specifies a URL for a documentation resource about this option -->
+							<helpURL>http://www.datadirect.com</helpURL>
+						</xs:appinfo>
+					</xs:annotation>
+					<!-- simpleType describes the type. All options will have a simpleType. -->
+					<xs:simpleType>
+						<!-- restriction is used to restrict allowed values -->
+						<xs:restriction base="xs:string">
+							<!-- minLength is the minimum length of the value that is allowed -->
+							<xs:minLength value="1" />
+							<!-- maxLength is the maximum length of the value that is allowed -->
+							<xs:maxLength value="128" />
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:element>
+				
+				<!-- A string option that allows the user to provide a description of the data source -->
+				<xs:element name="Description" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>A description you provide to describe this Data Source.</xs:documentation>
+						<xs:appinfo>
+							<displayName>Description</displayName>
+							<persistAsOption>false</persistAsOption>
+							<displayTab>1</displayTab>
+							<helpURL>http://www.datadirect.com</helpURL>
+						</xs:appinfo>
+					</xs:annotation>
+					<xs:simpleType>
+						<xs:restriction base="xs:string"/>
+					</xs:simpleType>
+				</xs:element>
+				
+				<!-- A string option that allows the user to specify the host name -->
+				<xs:element name="Host" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>The server name DataDirect Hybrid Data Pipeline will use to login to the database interface.</xs:documentation>
+						<xs:appinfo>
+							<displayName>Host</displayName>
+							<displayTab>1</displayTab>
+							<helpURL>http://www.datadirect.com</helpURL>
+						</xs:appinfo>
+					</xs:annotation>
+					<xs:simpleType>
+						<xs:restriction base="xs:string">
+							<xs:minLength value="1"/>
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:element>
+				
+				<!-- An integer option that allows the user to specify the port number -->
+				<xs:element name="Port" minOccurs="0" default="443">
+					<xs:annotation>
+						<xs:documentation>The port number DataDirect Hybrid Data Pipeline will use to login to the CockroachDB interface.</xs:documentation>
+						<xs:appinfo>
+							<displayName>Port</displayName>
+							<displayTab>1</displayTab>
+							<helpURL>http://www.datadirect.com</helpURL>
+						</xs:appinfo>
+					</xs:annotation>
+					<xs:simpleType>
+						<xs:restriction base="xs:integer">
+							<xs:minInclusive value="0"/>
+							<xs:maxInclusive value="65535"/>
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:element>
+				
+				<!-- A string option that allows the user to specify an HTTP path to the database -->
+				<xs:element name="httpPath" minOccurs="0">
+                    <xs:annotation>
+                        <xs:documentation>The name of the database to which you want to connect.</xs:documentation>
+                        <xs:appinfo>
+                            <displayName>HTTP Path</displayName>
+                            <displayTab>1</displayTab>
+                            <helpURL>http://www.datadirect.com</helpURL>
+                        </xs:appinfo>
+                    </xs:annotation>
+                    <xs:simpleType>
+                        <xs:restriction base="xs:string">
+                            <xs:minLength value="1"/>
+                        </xs:restriction>
+                    </xs:simpleType>
+                </xs:element>
+				
+				<!-- A string option that allows the user to specify the name of the database or database schema -->
+				<xs:element name="Schema" minOccurs="0">
+                    <xs:annotation>
+                        <xs:documentation>The name of the database to which you want to connect.</xs:documentation>
+                        <xs:appinfo>
+                            <displayName>Schema</displayName>
+                            <displayTab>1</displayTab>
+                            <helpURL>http://www.datadirect.com</helpURL>
+                        </xs:appinfo>
+                    </xs:annotation>
+                    <xs:simpleType>
+                        <xs:restriction base="xs:string">
+                            <xs:minLength value="1"/>
+                        </xs:restriction>
+                    </xs:simpleType>
+                </xs:element>
+				
+				<!-- An enumeration option that allows the user to specify whether to use binary (TCP) or HTTP protocols to access the database -->
+				<xs:element name="transportMode" minOccurs="1" default="http">
+					<xs:annotation>
+						<xs:documentation>The protocol used to access the database.</xs:documentation>
+						<xs:appinfo>
+							<displayName>Transport Mode</displayName>							
+							<displayTab>1</displayTab>
+							<helpURL>http://www.datadirect.com</helpURL>
+						</xs:appinfo>
+					</xs:annotation>
+					<xs:simpleType>
+						<xs:restriction base="xs:string">
+							<!-- binary enumeration -->
+							<xs:enumeration value="binary">
+								<xs:annotation>
+									<xs:appinfo>
+										<!-- Value displayed in UI drop down for this enumeration -->
+										<displayName>binary</displayName>
+									</xs:appinfo>
+								</xs:annotation>
+							</xs:enumeration>
+							<!-- http enumeration -->
+							<xs:enumeration value="http">
+								<xs:annotation>
+									<xs:appinfo>
+										<!-- Value displayed in UI drop down for this enumeration -->
+										<displayName>http</displayName>
+									</xs:appinfo>
+								</xs:annotation>
+							</xs:enumeration>
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:element>
+				
+				<!-- An enumeration option that allows the user to specify an authentication method -->
+				<xs:element name="AuthMethod" minOccurs="1" default="3">
+					<xs:annotation>
+						<xs:documentation>The authentication method used to connect to the database.</xs:documentation>
+						<xs:appinfo>
+							<displayName>Authentication Method</displayName>							
+							<displayTab>1</displayTab>
+							<helpURL>http://www.datadirect.com</helpURL>
+						</xs:appinfo>
+					</xs:annotation>
+					<xs:simpleType>
+						<xs:restriction base="xs:string">
+							<!-- Basic enumeration -->
+							<xs:enumeration value="Basic">
+								<xs:annotation>
+									<xs:appinfo>
+										<!-- Value displayed in UI drop down for this enumeration -->
+										<displayName>Basic</displayName>
+									</xs:appinfo>
+								</xs:annotation>
+							</xs:enumeration>
+							<!-- OAuth2 enumeration -->
+							<xs:enumeration value="OAuth2">
+								<xs:annotation>
+									<xs:appinfo>
+										<!-- Value displayed in UI drop down for this enumeration -->
+										<displayName>OAuth2</displayName>
+									</xs:appinfo>
+								</xs:annotation>
+							</xs:enumeration>
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:element>
+				
+				<!-- A string option that allows the user to specify the user ID -->
+				<xs:element name="UID" minOccurs="1">
+					<xs:annotation>
+						<xs:documentation>The user ID for the account you want this Data Source to use.</xs:documentation>
+						<xs:appinfo>
+							<displayName>User</displayName>							
+							<displayTab>1</displayTab>
+							<helpURL>http://www.datadirect.com</helpURL>
+						</xs:appinfo>
+					</xs:annotation>
+					<xs:simpleType>
+						<xs:restriction base="xs:string">
+							<xs:minLength value="1"/>
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:element>
+				
+				<!-- A string option that allows the user to specify the password -->
+				<xs:element name="PWD" minOccurs="1">
+					<xs:annotation>
+						<xs:documentation>The password for the account you want this Data Source to use.</xs:documentation>
+						<xs:appinfo>
+							<displayName>Password</displayName>							
+							<displayTab>1</displayTab>
+							<displayType>passwordType</displayType>
+							<helpURL>http://www.datadirect.com</helpURL>
+						</xs:appinfo>
+					</xs:annotation>
+					<xs:simpleType>
+						<xs:restriction base="xs:string">
+							<xs:minLength value="1"/>
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:element>
+				
+				<!-- An enumeration option that allows the user to specify an encryption method -->
+				<xs:element name="encryptionMethod" minOccurs="0" default="1">
+                    <xs:annotation>
+                    	<xs:documentation>The encryption method used to connect to the database.</xs:documentation>
+                        <xs:appinfo>
+                            <displayName>SSL</displayName>
+                            <displayTab>1</displayTab>
+                            <helpURL>http://www.datadirect.com</helpURL>
+                        </xs:appinfo>
+                    </xs:annotation>
+					<xs:simpleType>
+						<xs:restriction base="xs:string">
+							<!-- noEncryption enumeration -->
+							<xs:enumeration value="noEncryption">
+								<xs:annotation>
+									<xs:appinfo>
+										<!-- Value displayed in UI drop down for this enumeration -->
+										<displayName>noEncryption</displayName>
+									</xs:appinfo>
+								</xs:annotation>
+							</xs:enumeration>
+							<!-- SSL enumeration -->
+							<xs:enumeration value="SSL">
+								<xs:annotation>
+									<xs:appinfo>
+										<!-- Value displayed in UI drop down for this enumeration -->
+										<displayName>SSL</displayName>
+									</xs:appinfo>
+								</xs:annotation>
+							</xs:enumeration>
+						</xs:restriction>
+					</xs:simpleType>
+                </xs:element>
+				
+				<!-- ConnectorID option. The ConnectorID option is required for setting up on-premises connectivity with the On-Premises Connector. -->
+				<xs:element name="ConnectorID" minOccurs="0" encrypted="true">
+					<xs:annotation>
+						<xs:documentation>The unique identifier for the DataDirect Hybrid Data Pipeline On Premise Connector to use for accessing on-premise data sources.</xs:documentation>
+						<xs:appinfo>
+							<displayName>Connector ID</displayName>
+							<displayTab>1</displayTab>
+							<helpURL>http://www.datadirect.com</helpURL>
+							<callbacks>
+								<callback>
+									<callbackName>callback_connectorsUI</callbackName>
+								</callback>
+							</callbacks>
+						</xs:appinfo>
+					</xs:annotation>
+					<xs:simpleType>
+						<xs:restriction base="xs:string"/>
+					</xs:simpleType>
+				</xs:element>
+				
+				<!-- Required for OData connectivity -->
+				<xs:element name="ODataVersion" minOccurs="0" default="4">
+					<xs:annotation>
+						<xs:documentation>Defines OData version for the Data Source. If you want to use both versions, you need to create two different Data Sources.</xs:documentation>
+						<xs:appinfo>
+							<displayName>OData Version</displayName>
+							<displayTab>2</displayTab>
+							<helpURL>http://www.datadirect.com</helpURL>
+						</xs:appinfo>
+					</xs:annotation>
+					<xs:simpleType>
+						<xs:restriction base="xs:string">
+							<xs:enumeration value="4">
+								<xs:annotation>
+									<xs:appinfo>
+										<displayName>Version 4</displayName>
+									</xs:appinfo>
+								</xs:annotation>
+							</xs:enumeration>
+							<xs:enumeration value="2">
+								<xs:annotation>
+									<xs:appinfo>
+										<displayName>Version 2</displayName>
+									</xs:appinfo>
+								</xs:annotation>
+							</xs:enumeration>
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:element>
+				
+				<!-- Required for OData connectivity -->
+				<xs:element name="ODataNameMappingCase" minOccurs="0" default="Default">
+					<xs:annotation>
+						<xs:documentation>Defines OData name mapping case for the Data Source. Possible values Uppercase,LowerCase and Default, For example Uppercase is selected then the names derived for OData model will be converted to uppercase</xs:documentation>
+						<xs:appinfo>
+							<displayName>OData Name Mapping Case</displayName>
+							<displayTab>2</displayTab>
+							<helpURL>http://www.datadirect.com</helpURL>
+						</xs:appinfo>
+					</xs:annotation>
+					<xs:simpleType>
+						<xs:restriction base="xs:string">
+							<xs:enumeration value="Default">
+								<xs:annotation>
+									<xs:appinfo>
+										<displayName>Default</displayName>
+									</xs:appinfo>
+								</xs:annotation>
+							</xs:enumeration>
+							<xs:enumeration value="Uppercase">
+								<xs:annotation>
+									<xs:appinfo>
+										<displayName>Uppercase</displayName>
+									</xs:appinfo>
+								</xs:annotation>
+							</xs:enumeration>
+							<xs:enumeration value="Lowercase">
+								<xs:annotation>
+									<xs:appinfo>
+										<displayName>Lowercase</displayName>
+									</xs:appinfo>
+								</xs:annotation>
+							</xs:enumeration>
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:element>
+				
+				<!-- Required for OData connectivity -->
+				<xs:element name="ODataDefaultTimezone" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>Defines the default timezone for an OData v4 data source. Must be a valid ZoneID. For example: America/New_York</xs:documentation>
+						<xs:appinfo>
+							<displayName>OData Default Timezone</displayName>
+							<displayTab>2</displayTab>
+							<helpURL>http://www.datadirect.com</helpURL>
+						</xs:appinfo>
+					</xs:annotation>
+					<xs:simpleType>
+						<xs:restriction base="xs:string" />
+					</xs:simpleType>
+				</xs:element>
+				
+				<!-- Required for OData connectivity -->
+				<xs:element name="ODataSchemaMap" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>Defines how tables in the data source are mapped to OData Entities</xs:documentation>
+						<xs:appinfo>
+							<displayName>Schema Map</displayName>
+							<displayTab>2</displayTab>
+							<helpURL>http://www.datadirect.com</helpURL>
+							<callbacks>
+								<callback>
+									<callbackName>callback_odataSchemaMapOptionsUI</callbackName>
+								</callback>
+							</callbacks>
+						</xs:appinfo>
+					</xs:annotation>
+					<xs:simpleType>
+						<xs:restriction base="xs:string" />
+					</xs:simpleType>
+				</xs:element>
+				
+				<!-- Required for OData connectivity -->
+				<xs:element name="ODataPageSize" minOccurs="0" default="0">
+					<xs:annotation>
+						<xs:documentation>Controls the number of entities returned in each page.  When the page size is set to 0, the server default of 2000 entities is used.  The maximum page size is 10000 entities.</xs:documentation>
+						<xs:appinfo>
+							<displayName>Page Size</displayName>
+							<displayTab>2</displayTab>
+							<helpURL>http://www.datadirect.com</helpURL>
+						</xs:appinfo>
+					</xs:annotation>
+					<xs:simpleType>
+						<xs:restriction base="xs:integer">
+							<xs:minInclusive value="0" />
+							<xs:maxInclusive value="10000" />
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:element>
+				
+				<!-- Required for OData connectivity -->
+				<xs:element name="ODataRefreshResult" minOccurs="0" default="1">
+					<xs:annotation>
+						<xs:documentation>Controls whether the first page of results is cached (set to 0) or the query will be re-executed (set to 1).</xs:documentation>
+						<xs:appinfo>
+							<displayName>Refresh Result</displayName>
+							<displayTab>2</displayTab>
+							<helpURL>http://www.datadirect.com</helpURL>
+						</xs:appinfo>
+					</xs:annotation>
+					<xs:simpleType>
+						<xs:restriction base="xs:string">
+							<xs:enumeration value="0">
+								<xs:annotation>
+									<xs:appinfo>
+										<displayName>0</displayName>
+									</xs:appinfo>
+								</xs:annotation>
+							</xs:enumeration>
+							<xs:enumeration value="1">
+								<xs:annotation>
+									<xs:appinfo>
+										<displayName>1</displayName>
+									</xs:appinfo>
+								</xs:annotation>
+							</xs:enumeration>
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:element>
+				
+				<!-- Required for OData connectivity -->
+				<xs:element name="ODataInlineCountMode" minOccurs="0" default="2">
+					<xs:annotation>
+						<xs:documentation>Controls how $inlinecount is processed.  Set to 1 to use a separate query to obtain count (better for large results).  Set to 2 to buffer all rows before returning first page to obtain count (better for small results).</xs:documentation>
+						<xs:appinfo>
+							<displayName>Inline Count Mode</displayName>
+							<displayTab>2</displayTab>
+							<helpURL>http://www.datadirect.com</helpURL>
+						</xs:appinfo>
+					</xs:annotation>
+					<xs:simpleType>
+						<xs:restriction base="xs:string">
+							<xs:enumeration value="0">
+								<xs:annotation>
+									<xs:appinfo>
+										<displayName>0</displayName>
+									</xs:appinfo>
+								</xs:annotation>
+							</xs:enumeration>
+							<xs:enumeration value="1">
+								<xs:annotation>
+									<xs:appinfo>
+										<displayName>1</displayName>
+									</xs:appinfo>
+								</xs:annotation>
+							</xs:enumeration>
+							<xs:enumeration value="2">
+								<xs:annotation>
+									<xs:appinfo>
+										<displayName>2</displayName>
+									</xs:appinfo>
+								</xs:annotation>
+							</xs:enumeration>
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:element>
+				
+				<!-- Required for OData connectivity -->
+				<xs:element name="ODataTopMode" minOccurs="0" default="0">
+					<xs:annotation>
+						<xs:documentation>By indicating how the application uses $top, the service can better anticipate how it should process queries that use $top.  Set to 0 if the application generally uses $top to limit the size of the result and rarely attempts to get additional entities by combining $top and $skip.  Set to 1 if the application is using $top as part of client driven paging and generally will combine $top and $skip to page through the result.</xs:documentation>
+						<xs:appinfo>
+							<displayName>Top Mode</displayName>
+							<displayTab>2</displayTab>
+							<helpURL>http://www.datadirect.com</helpURL>
+						</xs:appinfo>
+					</xs:annotation>
+					<xs:simpleType>
+						<xs:restriction base="xs:string">
+							<xs:enumeration value="0">
+								<xs:annotation>
+									<xs:appinfo>
+										<displayName>0</displayName>
+									</xs:appinfo>
+								</xs:annotation>
+							</xs:enumeration>
+							<xs:enumeration value="1">
+								<xs:annotation>
+									<xs:appinfo>
+										<displayName>1</displayName>
+									</xs:appinfo>
+								</xs:annotation>
+							</xs:enumeration>
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:element>
+				
+				<!-- Required for OData connectivity -->
+				<xs:element name="ODataReadOnly" minOccurs="0" default="false">
+					<xs:annotation>
+						<xs:documentation>Restrict OData access to read-only mode.</xs:documentation>
+						<xs:appinfo>
+							<displayName>OData Read Only</displayName>
+							<displayTab>2</displayTab>
+							<helpURL>https://www.example.com</helpURL>
+						</xs:appinfo>
+					</xs:annotation>
+					<xs:simpleType>
+						<xs:restriction base="xs:boolean"/>
+					</xs:simpleType>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>	
+	
+	<!-- The Hybrid-Tabs element allows you to introduce additional tabs -->
+	<xs:element name="Hybrid-Tabs">
+		<xs:complexType>
+			<xs:sequence>
+				<!-- This element introduces the Connection tab. The numeric id indicates the ordinal position of the tab from left to right. -->
+				<xs:element name="Connection" id="1" />
+				<!-- This element introduces the OData tab. The numeric id indicates the ordinal position of the tab from left to right. -->
+				<xs:element name="OData" id="2" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	
+	<!-- The Search-Options element is required for OData connectivity. It should not be modified. The Search-Options element defines the modes allowed for OData search. -->
+	<xs:element name="Search-Options" default="no-search">
+		<xs:simpleType>
+			<xs:restriction base="xs:string">
+				<xs:enumeration value="no-search">
+					<xs:annotation>
+						<xs:appinfo>
+							<displayName>No Search</displayName>
+						</xs:appinfo>
+					</xs:annotation>
+				</xs:enumeration>
+				<xs:enumeration value="substring">
+					<xs:annotation>
+						<xs:appinfo>
+							<displayName>Substring</displayName>
+						</xs:appinfo>
+					</xs:annotation>
+				</xs:enumeration>
+				<xs:enumeration value="begins">
+					<xs:annotation>
+						<xs:appinfo>
+							<displayName>Begins</displayName>
+						</xs:appinfo>
+					</xs:annotation>
+				</xs:enumeration>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:element>
+</xs:schema>

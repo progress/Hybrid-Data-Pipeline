@@ -1,0 +1,31 @@
+<?xml version='1.0' encoding='utf-8'?>
+<Profiles>
+    <!-- DataStore: The element containing the profile for this datastore
+        name:  The name of the datastore
+        inherit:  The profile that this datastore inherits
+        abstract:  Flag that indicates whether this datastore is abstract (defaults to false)
+        internal:  Flag that controls whether the datastore is loaded as an internal or external object (defaults to false)
+        metadataVersion:  Numeric value for the datastore's profile metadata.  Bump this value when the metadata changes.
+    -->
+    <DataStore name="datastore A" inherit="NonUTCBaseDriverDataStore" internal="false" metadataVersion="1">
+        <!-- ID: The numeric value for uniquely identifying this datastore. This must be an integer between 5001 and 7000. The same unique ID must be specified in the options.xml file with the "id" element. -->
+        <ID>5030</ID>
+        <!-- displayOrder: a number that indicates in what order the data store will appear among other data stores on the data store page -->
+        <DisplayOrder>330</DisplayOrder>
+        <!-- ProductName: The name to display for this datastore -->
+        <ProductName>DataStore A</ProductName>
+        <!-- DriverName:  The name of the driver associated with this datastore -->
+        <DriverName>connector1</DriverName>
+        <!-- DriverClass: The qualified classname for the JDBC driver of this datastore -->
+        <DriverClass>com.connector1.client.jdbc.Driver</DriverClass>
+        <!-- URLTemplate: The default prefix to use for the JDBC connection URL -->
+        <URLTemplate>jdbc:connector1://abc-123-example-instance.com</URLTemplate>
+        <!-- Do not modify. -->
+        <Status>5</Status>
+        <!-- Branded: Flag that indicates whether this datastore's driver is branded (defaults to true). This should be false for third-party connectors. -->
+        <Branded>false</Branded>
+        <!-- TopTerm: Used by OData logic for controlling how the top/limit function is accessed for this datastore.
+            Valid values: TOP, LIMIT, ROWNUM, SETMAXROWS, FIRST, FETCHFIRST, NONE -->
+        <TopTerm>LIMIT</TopTerm>
+    </DataStore>
+</Profiles>
