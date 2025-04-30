@@ -43,6 +43,11 @@ AuthType = type function(
         Documentation.FieldDescription = "Required for OAuth 2.0 & OIDC",
         Documentation.SampleValues = {"https://oauth.powerbi.com/views/oauthredirect.html"}
     ]),
+    Scope as (type nullable text meta [
+        Documentation.FieldCaption = "Scope",
+        Documentation.FieldDescription = "OAuth Scope",
+        Documentation.SampleValues = {"api.access.odata"}
+    ]),
     optional AuthServiceName as (type text meta [
         Documentation.FieldCaption = "HDP Auth Service",
         Documentation.FieldDescription = "Required for OIDC",
@@ -52,8 +57,18 @@ AuthType = type function(
     as table meta [
         Documentation.Name = "Hybrid Data Pipeline OData Connector"
     ];
-ContentsImpl = (ODataServiceURL as text, AuthTypeValue as text, IssuerAuthUrl as nullable text, IssuerTokenUrl as nullable text, ClientID as nullable text, ClientSecret as nullable text, RedirectURL as nullable text,
-                    optional AuthServiceName as text) =>
+
+ContentsImpl = (
+    ODataServiceURL as text, 
+    AuthTypeValue as text, 
+    IssuerAuthUrl as nullable text, 
+    IssuerTokenUrl as nullable text, 
+    ClientID as nullable text, 
+    ClientSecret as nullable text, 
+    RedirectURL as nullable text,
+    Scope as nullable text,
+    optional AuthServiceName as text
+) =>
 let
     source = if(AuthTypeValue = "OIDC")
             then
@@ -81,13 +96,14 @@ HdpOAuthConnect = [
     ],
     Label = Extension.LoadString("DataSourceLabel")
 ];
+
 StartLogin = (resourceUrl, state, display) =>
 let
     inputData = Json.Document(resourceUrl),
     clientId = inputData[ClientID],
     clientSecret = inputData[ClientSecret],
     authUrl = inputData[IssuerAuthUrl],
-    scope = "api.access.odata",
+    scope = inputData[Scope],
     redirectUrl = inputData[RedirectURL],
     AuthorizeUrl = Text.Combine({authUrl, "?"}) 
                     & Uri.BuildQueryString([
