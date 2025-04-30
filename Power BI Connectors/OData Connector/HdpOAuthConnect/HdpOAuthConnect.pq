@@ -1,7 +1,10 @@
-﻿section HdpOAuthConnect;
+﻿// This file contains your Data Connector logic
+[Version = "1.0.0"]
+section HdpOAuthConnect;
 response_type = "code";
 windowWidth = 1200;
 windowHeight = 1000;
+
 [DataSource.Kind="HdpOAuthConnect", Publish="HdpOAuthConnect.Publish"]
 shared HdpOAuthConnect.Contents = Value.ReplaceType(ContentsImpl, AuthType);
 
@@ -65,6 +68,7 @@ let
                 [ ODataVersion = 4, MoreColumns = true ])
 in
     source;
+
 // Data Source definition
 HdpOAuthConnect = [
     Authentication = [
@@ -100,6 +104,7 @@ in
         WindowWidth = windowWidth,
         Context = null
     ];
+
 FinishLogin = (clientApplication, resourceUrl, context, callbackUri, state) =>
 let
     inputData = Json.Document(resourceUrl),
@@ -115,6 +120,7 @@ let
                 TokenMethod("authorization_code", parts[code], clientId, clientSecret, tokenUrl, redirectUrl)
 in
     result;
+
 TokenMethod = (grantType, code, clientId, clientSecret, tokenUrl, redirectUrl) =>
 let
     query = [
@@ -137,6 +143,7 @@ let
                 Parts
     in
         Result;
+
 Refresh = (resourceUrl, refresh_token) => 
 let
     inputData = Json.Document(resourceUrl),
@@ -147,6 +154,7 @@ let
     result = TokenMethod("refresh_token", refresh_token, clientId, clientSecret, tokenUrl, redirectUrl)
 in
     result;
+
 // Data Source UI publishing description
 HdpOAuthConnect.Publish = [
     Beta = false,
@@ -156,6 +164,7 @@ HdpOAuthConnect.Publish = [
     SourceImage = HdpOAuthConnect.Icons,
     SourceTypeImage = HdpOAuthConnect.Icons
 ];
+
 HdpOAuthConnect.Icons = [
     Icon16 = { Extension.Contents("HdpOAuthConnect16.png"), Extension.Contents("HdpOAuthConnect20.png"), Extension.Contents("HdpOAuthConnect24.png"), Extension.Contents("HdpOAuthConnect32.png") },
     Icon32 = { Extension.Contents("HdpOAuthConnect32.png"), Extension.Contents("HdpOAuthConnect40.png"), Extension.Contents("HdpOAuthConnect48.png"), Extension.Contents("HdpOAuthConnect64.png") }

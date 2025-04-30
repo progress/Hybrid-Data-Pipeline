@@ -1,0 +1,5 @@
+{
+    "powerquery.general.mode": "SDK",
+    "powerquery.sdk.defaultExtension": "${workspaceFolder}\\bin\\Release\\${workspaceFolderBasename}.mez",
+    "powerquery.sdk.defaultQueryFile": "${workspaceFolder}\\${workspaceFolderBasename}.query.pq"
+}
