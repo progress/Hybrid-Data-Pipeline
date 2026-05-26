@@ -1,0 +1,27 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "type": "powerquery",
+            "operation": "compile",
+            "additionalArgs": [
+                "--directory",
+                "${workspaceFolder}\\bin\\Debug",
+            ],
+            "group": "build",
+            "problemMatcher": [],
+            "label": "build: Debug"
+        },
+        {
+            "type": "powerquery",
+            "operation": "compile",
+            "additionalArgs": [
+                "--directory",
+                "${workspaceFolder}\\bin\\Release",
+            ],
+            "group": "build",
+            "problemMatcher": [],
+            "label": "build: Release"
+        }
+    ]
+}

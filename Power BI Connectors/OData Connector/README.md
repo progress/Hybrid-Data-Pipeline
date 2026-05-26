@@ -1,15 +1,25 @@
-## Hybrid Data Pipeline OData Connector for Power BI
+# HDP OData Connector for Power BI
 
-### Using the Connector
+This repository contains the source code for the HDP Power BI connector and explains how to build the connector from source. For more detailed information on installing and using the connector, see the [official product documentation](https://docs.progress.com/bundle/datadirect-hybrid-data-pipeline/page/Custom-connector-for-Power-BI.html)
 
-1. To Download the connector, Go to [Releases](https://github.com/progress/Hybrid-Data-Pipeline/releases) and download the `HdpOAuthConnect.pqx` file.
-2. On your Windows machine, Go to `Documents` and create a folder called `Power BI Desktop`.
-3. Inside the folder `Power BI Desktop`, create another folder called `Custom Connectors`.
-4. Copy the `HdpOAuthConnect.pqx` file to `Custom Connectors` folder
-5. Open Power BI, Go to `File` -> `Options and Settings` -> `Security` -> `Data Extensions` -> `Choose Allow any extension to load without validation or warning.`
-6. Click on OK and Restart Power BI.
-7. Click on `Get Data` -> `Other` and you should find the `Hybrid Data Pipeline OData Connector`. COnfigure your OData Access URI, Authentication Method and get connected!
+## Quick Start
 
+**Prerequisites:** Windows machine with PowerShell 5.1 or later. No other tools required — the build script downloads everything it needs on first run.
 
-### Documentation
-You can refer to our documentation to learn more about our connector
+```powershell
+.\build.ps1                        # Debug build
+.\build.ps1 -Configuration Release # Release build
+```
+
+Output: `HdpOAuthConnect\bin\<Configuration>\HdpOAuthConnect.mez`
+
+The Power Query SDK tools are downloaded and cached in `.packages/` on first run.
+
+### Building in VS Code
+
+The [Power Query SDK extension](https://marketplace.visualstudio.com/items?itemName=PowerQuery.vscode-powerquery-sdk) (`PowerQuery.vscode-powerquery-sdk`) integrates with VS Code's build system.
+
+1. Open the `HdpOAuthConnect/` folder as the workspace root in VS Code
+2. Install the Power Query SDK extension
+3. Run **Terminal → Run Build Task** (`Ctrl+Shift+B`) and select **build: Debug** or **build: Release**
+
