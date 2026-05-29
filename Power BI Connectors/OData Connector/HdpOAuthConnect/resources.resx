@@ -126,4 +126,31 @@
   <data name="DataSourceLabel" xml:space="preserve">
     <value>Hybrid Data Pipeline OData Connector</value>
   </data>
+  <data name="DataSourceLabel_Basic" xml:space="preserve">
+    <value>HDP OData (Basic)</value>
+  </data>
+  <data name="DataSourceLabel_OAuth" xml:space="preserve">
+    <value>HDP OData (OAuth 2.0)</value>
+  </data>
+  <data name="DataSourceLabel_OIDCConfidential" xml:space="preserve">
+    <value>HDP OData (OIDC — Confidential)</value>
+  </data>
+  <data name="DataSourceLabel_OIDCPublic" xml:space="preserve">
+    <value>HDP OData (OIDC — Public)</value>
+  </data>
+  <data name="OAuthLabel" xml:space="preserve">
+    <value>OAuth 2.0</value>
+  </data>
+  <data name="ButtonHelp_Basic" xml:space="preserve">
+    <value>Connect to HDP OData using Basic authentication</value>
+  </data>
+  <data name="ButtonHelp_OAuth" xml:space="preserve">
+    <value>Connect to HDP OData using OAuth 2.0</value>
+  </data>
+  <data name="ButtonHelp_OIDCConfidential" xml:space="preserve">
+    <value>Connect to HDP OData using OIDC with a client secret</value>
+  </data>
+  <data name="ButtonHelp_OIDCPublic" xml:space="preserve">
+    <value>Connect to HDP OData using OIDC with PKCE</value>
+  </data>
 </root>
